@@ -1,0 +1,18 @@
+total 240
+  8 1158.cpp
+  8 1699.cpp
+  8 1764.cpp
+  8 669-1.cpp
+  8 C.cpp
+  8 D.cpp
+104 a.out
+ 16 cat.txt
+  8 lowpivot.cpp
+  0 ls.txt
+  8 midpivot.cpp
+  8 out.txt
+  8 randompivot.cpp
+ 16 shell.c
+  8 test.c
+  8 test.cpp
+  8 test.txt
