@@ -39,7 +39,7 @@ dst = np.float32([[280, 640], [360, 640], [0, 0], [640, 0]])
 M = cv2.getPerspectiveTransform(src, dst) # The transformation matrix
 Minv = cv2.getPerspectiveTransform(dst, src) # Inverse transformation
 
-img = cv2.imread('./1.jpeg') # Read the test img
+img = cv2.imread('./1.png') # Read the test img
 #img = img[80:(80+IMAGE_H), 0:IMAGE_W] # Apply np slicing for ROI crop
 
 img2 = cv2.warpPerspective(img, M, (IMAGE_W, IMAGE_H)) # Image warping
@@ -56,7 +56,7 @@ plt.show()
 before = []
 for x in range(img2.shape[1]):
     for y in range(img2.shape[0]):
-        point = [x, y, 1]
+        point = [y, x, 1]
         before.append(point)
 before = np.array(before).transpose()
 
@@ -66,20 +66,33 @@ after = after[:2, :]
 after2 = np.round(after, 10).astype(np.int)
 after3 = np.round(after, 10).astype(np.float)
 
+afterx = after3[0]
+aftery = after3[1]
+"""
+row, col = afterx.shape
+afterx2 = afterx
+aftery2 = aftery
+for i in range(row):
+    for j in range(col):
+        afterx2[i][j] = afterx[i][j]
+        aftery2[i][j] = aftery[i][j]
+afterx3 = afterx2.reshape(-1)
+aftery3 = aftery2.reshape(-1)
+"""
 print("%YAML:1.0")
 print("---")
 print("remap_ipm_x: !!opencv-matrix")
 print("   rows: 640")
 print("   cols: 640")
 print("   dt: f")
-print("   data: ", after3[0].transpose().tolist())
+print("   data: ", afterx.tolist())
 
 print("remap_ipm_y: !!opencv-matrix")
 print("   rows: 640")
 print("   cols: 640")
 print("   dt: f")
-print("   data: ", after3[1].transpose().tolist())
-
+print("   data: ", aftery.tolist())
+"""
 height, width, _ = img.shape
 result = np.zeros((height, width, 3), dtype = np.uint8)
 for pt1, pt2 in zip(before[:2, :].transpose(), after2.transpose()):
@@ -93,3 +106,4 @@ for pt1, pt2 in zip(before[:2, :].transpose(), after2.transpose()):
 
 plt.imshow(cv2.cvtColor(result, cv2.COLOR_BGR2RGB))
 plt.show()
+"""
