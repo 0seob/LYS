@@ -37,7 +37,7 @@ def solution():
             if arr[nx][ny][nz] != 0 or visit[nx][ny][nz] != 0 :
                 continue
             visit[nx][ny][nz] = visit[i][j][k] + 1
-            # arr[nx][ny][nz] = 1
+            arr[nx][ny][nz] = 1
             dq.append([nx, ny, nz])
     max_val = 0
     for i in range(N):
@@ -52,3 +52,7 @@ def solution():
     
 if __name__ == "__main__":
     solution()
+    
+# 문제 접근 방법
+# # bfs의 정석
+# # arr[nx][ny][nz] = 1
