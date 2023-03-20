@@ -29,7 +29,7 @@ def solution(files):
                     ftemp.append(temp)
                 ftemp.append(idx)
         all_files.append(ftemp)
-    all_files = sorted(all_files, key = lambda x : (x[0].lower(), int(x[1]), x[3]))
+    all_files = sorted(all_files, key = lambda x : (x[0].lower(), int(x[1])))
     for af in all_files:
         answer.append(''.join(af[:3]))
     return answer
