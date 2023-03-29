@@ -30,3 +30,7 @@ def solution(picks, minerals):
         else:
             break
     return answer
+
+# 문제 접근 방법
+# # 5개씩 잘라서 피로도 큰 순서대로 정렬하고 앞에서부터 다이아 배치
+# # 곡괭이 개수만큼만 자르고 정렬하면 된다. 이후는 곡괭이가 없어서 접근할 수가 없음
